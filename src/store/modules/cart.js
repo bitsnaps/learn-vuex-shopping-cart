@@ -57,6 +57,7 @@ export default {
           commit('incrementItemQuantity', cartItem)
         }
         commit('products/decrementProductInventory', product, {root: true})
+        commit('setCheckoutStatus', null)
       }
     },
 
@@ -67,9 +68,7 @@ export default {
           commit('emptyCart')
           commit('setCheckoutStatus', 'success')
         },
-        () => {
-          commit('setCheckoutStatus', 'fail')
-        }
+        () => commit('setCheckoutStatus', 'fail')
       )
     }
   }

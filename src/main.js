@@ -1,14 +1,12 @@
-import Vue from 'vue'
-import App from './App'
-import store from '@/store/index'
-import {currency} from "@/currency";
+import { createApp } from 'vue'
+import './style.css'
+import App from './App.vue'
+import { createStore } from 'vuex'
+import store from './store/index'
+// import {currency} from "./helpers/currency";
 
-Vue.config.productionTip = false
-Vue.filter('currency', currency)
-
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  store,
-  render: h => h(App)
-})
+createApp(App)
+    // .use(createStore(store))
+    .use(store)
+    // .filter('currency', currency) // removed in Vue 3
+    .mount('#app')
